@@ -344,10 +344,117 @@ class MyViewController : UIViewController {
         }
         let card = Card(rank: .five, response: .failure("error"))
         print(card.simpleDescription())
+
+        
+        //12.协议和扩展
+        //协议
+        class SimpleClass: ExampleProtocol {
+            //class实现协议
+            var simpleDescription: String = "一个实现了协议的class的属性变量"
+            var anotherProperty: Int = 12345
+            func adjust() {
+                simpleDescription += ": 修改class变量"
+            }
+        }
+        let sc = SimpleClass()
+        sc.adjust()
+        let scDes = sc.simpleDescription
+        print(scDes)
+
+        
+        struct SimpleStructure: ExampleProtocol {
+            //struct实现协议
+            var simpleDescription: String = "一个实现了协议的struct的变量"
+            mutating func adjust() {
+                simpleDescription += "变量被方法：adjust 修饰"
+            }
+        }
+        var ss = SimpleStructure()
+        ss.adjust()
+        let ssDes = ss.simpleDescription
+        print(ssDes)
+        
+        
+        let protocolValue: ExampleProtocol = SimpleClass()
+        //虽然protocolValue的实际类型是SimpleClass，但是他只能调用ExampleProtocol中的方法
+        print("协议的值为：\(protocolValue)")
+        
+        
+        //13.错误处理
+        //遵守Error协议的枚举
+        enum PrinterError:Error {
+            case outOfPaper
+            case noToner
+            case onFire
+        }
+        //throws: 表示可能抛出异常的函数
+        func send(jod: Int, toProinter printerName: String) throws -> String {
+            defer {
+                //函数返回前，最后执行的代码。无论是否throw异常崩溃，都会执行
+            }
+            
+            if printerName == "Never Has Toner" {
+                throw PrinterError.noToner
+            }
+            return "Job sent"
+        }
+        
+        do {
+            let printerResponse = try send(jod: 404, toProinter: "Bi Sheng")
+        } catch {
+            //catch中没有对error重命名，则默认收到error
+            print("捕获到的错误为：\(error)")
+        }
+        
+        //分情况处理error
+        do {
+            let printerResponse = try send(jod: 500, toProinter: "GuTenBerg")
+            print(printerResponse)
+        } catch PrinterError.onFire {
+            print("just put this over here")
+        } catch let pError as PrinterError {
+            print("printer error: \(pError)")
+        } catch {
+            print(error)
+        }
+        //try?: 有throw异常 函数返回nil, 否则正常返回值
+        let printerSuccess = try? send(jod: 505, toProinter: "Mergenthaler")
+        
+        
+        //14.泛型
+        func makeArray<Item>(repeating item:Item, numberOfTimes: Int) -> [Item] {
+            var result = [Item]()
+            
+            for _ in 0..<numberOfTimes {
+                result.append(item)
+            }
+            return result
+        }
+        let arr = makeArray(repeating: "hello", numberOfTimes: 4)
+        print(arr)
         
     }
-    
-
 }
+
+//12.协议和扩展
+protocol ExampleProtocol {
+    var simpleDescription: String {get}
+    //mutating修饰的方法可以修改enum, struct中的变量；class中的变量对协议是透明的。
+    mutating func adjust()
+}
+
+//扩展: 扩展Int类，遵守协议ExampleProtocol，并实现方法
+extension Int: ExampleProtocol {
+    mutating func adjust() {
+        self += 22;
+    }
+    
+    var simpleDescription: String {
+        return "The number of \(self)"
+    }
+}
+
+
+
 // Present the view controller in the Live View window
 PlaygroundPage.current.liveView = MyViewController()
