@@ -433,6 +433,19 @@ class MyViewController : UIViewController {
         let arr = makeArray(repeating: "hello", numberOfTimes: 4)
         print(arr)
         
+        
+        func anyCommonElements<T: Sequence, U: Sequence>(_ lhs:T, _ rhs: U) -> Bool where T.Element: Equatable, T.Element == U.Element {
+            //在类型的后面使用where来指定对类型的一系列需求
+            for lhsItem in lhs {
+                for rhsItem in rhs {
+                    if lhsItem == rhsItem {
+                        return true
+                    }
+                }
+            }
+            return false
+        }
+        anyCommonElements([1,2.3], [3])
     }
 }
 
