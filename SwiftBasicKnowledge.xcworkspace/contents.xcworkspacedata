@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:SwiftUI_0/SwiftUI_0.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Basic_Part_Playground.playground">
    </FileRef>
 </Workspace>
