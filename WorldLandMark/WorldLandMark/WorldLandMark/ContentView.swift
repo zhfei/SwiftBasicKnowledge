@@ -22,22 +22,31 @@ struct ContentView: View {
              */
              
             List(landmarks){ item in
-                NavigationLink(destination: {LandmarkDetail(landmark: item)}) {
-                    HStack{
-                        Image("icon_consult_default_avatar_assistant")
-                        VStack {
-                            Text("长城")
-                            Text("北京")
-                                .font(.subheadline)
-                                .foregroundColor(Color.gray)
-                             
-                        }
-                    }
-                }
+                //所有的视图容器，都是遵守了View协议的结构体，结构体会为它内部的属性自动生成构造函数
+                LandmarkCell(landmark: item)
                  
             }.navigationBarTitle(Text("世界地标"),displayMode: NavigationBarItem.TitleDisplayMode.large)
         }
          
+    }
+}
+
+struct LandmarkCell: View {
+    let landmark: Landmark
+    
+    var body: some View {
+        NavigationLink(destination: {LandmarkDetail(landmark: landmark)}) {
+            HStack{
+                Image("icon_consult_default_avatar_assistant")
+                VStack {
+                    Text("长城")
+                    Text("北京")
+                        .font(.subheadline)
+                        .foregroundColor(Color.gray)
+                     
+                }
+            }
+        }
     }
 }
  
