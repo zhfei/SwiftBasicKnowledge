@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		914534082A70140C00AA82E3 /* LandmarkDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914534072A70140C00AA82E3 /* LandmarkDetail.swift */; };
+		9145340A2A70145B00AA82E3 /* Landmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914534092A70145B00AA82E3 /* Landmark.swift */; };
 		91DBC1842A700FA80024238E /* WorldLandMarkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DBC1832A700FA80024238E /* WorldLandMarkApp.swift */; };
 		91DBC1862A700FA80024238E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DBC1852A700FA80024238E /* ContentView.swift */; };
 		91DBC1882A700FAB0024238E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91DBC1872A700FAB0024238E /* Assets.xcassets */; };
@@ -34,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		914534072A70140C00AA82E3 /* LandmarkDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkDetail.swift; sourceTree = "<group>"; };
+		914534092A70145B00AA82E3 /* Landmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Landmark.swift; sourceTree = "<group>"; };
 		91DBC1802A700FA80024238E /* WorldLandMark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorldLandMark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91DBC1832A700FA80024238E /* WorldLandMarkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldLandMarkApp.swift; sourceTree = "<group>"; };
 		91DBC1852A700FA80024238E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -98,6 +102,8 @@
 				91DBC1852A700FA80024238E /* ContentView.swift */,
 				91DBC1872A700FAB0024238E /* Assets.xcassets */,
 				91DBC1892A700FAB0024238E /* Preview Content */,
+				914534072A70140C00AA82E3 /* LandmarkDetail.swift */,
+				914534092A70145B00AA82E3 /* Landmark.swift */,
 			);
 			path = WorldLandMark;
 			sourceTree = "<group>";
@@ -258,7 +264,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				91DBC1862A700FA80024238E /* ContentView.swift in Sources */,
+				914534082A70140C00AA82E3 /* LandmarkDetail.swift in Sources */,
 				91DBC1842A700FA80024238E /* WorldLandMarkApp.swift in Sources */,
+				9145340A2A70145B00AA82E3 /* Landmark.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

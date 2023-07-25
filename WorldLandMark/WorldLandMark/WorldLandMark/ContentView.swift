@@ -21,8 +21,8 @@ struct ContentView: View {
               
              */
              
-            List(/*@START_MENU_TOKEN@*/0 ..< 5/*@END_MENU_TOKEN@*/){ item in
-                NavigationLink(destination: Text("万里长城")) {
+            List(landmarks){ item in
+                NavigationLink(destination: {LandmarkDetail(landmark: item)}) {
                     HStack{
                         Image("icon_consult_default_avatar_assistant")
                         VStack {
