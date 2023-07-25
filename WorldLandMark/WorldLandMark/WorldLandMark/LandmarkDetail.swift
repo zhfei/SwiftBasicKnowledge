@@ -10,18 +10,25 @@ import SwiftUI
 struct LandmarkDetail: View {
     
     let landmark:Landmark
+    @State var zoomed = false
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
             Image("pic5")
                 .resizable(resizingMode: .stretch)
-                .aspectRatio(contentMode: .fit)
+                .aspectRatio(contentMode: zoomed ? .fill : .fit)
                 .frame(minWidth: 0, idealWidth: 100, maxWidth: .infinity, minHeight: 0, idealHeight: 100, maxHeight: .infinity, alignment: .center)
-            .navigationBarTitle(Text("自由女神像"),displayMode: NavigationBarItem.TitleDisplayMode.inline)
+                .navigationBarTitle(Text("自由女神像"),displayMode: NavigationBarItem.TitleDisplayMode.inline)
+                .onTapGesture {
+                    self.zoomed.toggle()
+                }
             
-            Text("纽约")
-                .foregroundColor(.secondary)
-                .font(.largeTitle)
-                .padding()
+            if !zoomed {
+                Text("纽约")
+                    .foregroundColor(.secondary)
+                    .font(.largeTitle)
+                    .padding()
+            }
+            
         }
             
     }
