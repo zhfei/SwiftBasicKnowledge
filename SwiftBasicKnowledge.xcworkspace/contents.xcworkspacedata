@@ -2,7 +2,10 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:WorldLandMark/WorldLandMark.xcodeproj">
+      location = "group:ChinaLandmark/ChinaLandmark.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:WorldLandMark/WorldLandMark/WorldLandMark.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Swift0/Swift0.xcodeproj">
