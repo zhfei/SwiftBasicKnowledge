@@ -12,6 +12,7 @@
 		9114389E2A72B9F700B5401D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9114389D2A72B9F700B5401D /* Assets.xcassets */; };
 		911438A12A72B9F800B5401D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 911438A02A72B9F800B5401D /* Preview Assets.xcassets */; };
 		911438A82A72BA8C00B5401D /* LandmarkDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911438A72A72BA8C00B5401D /* LandmarkDetail.swift */; };
+		911438AA2A733C0300B5401D /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911438A92A733C0300B5401D /* MapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		9114389D2A72B9F700B5401D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		911438A02A72B9F800B5401D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		911438A72A72BA8C00B5401D /* LandmarkDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkDetail.swift; sourceTree = "<group>"; };
+		911438A92A733C0300B5401D /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 				9114389D2A72B9F700B5401D /* Assets.xcassets */,
 				9114389F2A72B9F800B5401D /* Preview Content */,
 				911438A72A72BA8C00B5401D /* LandmarkDetail.swift */,
+				911438A92A733C0300B5401D /* MapView.swift */,
 			);
 			path = ChinaLandmark;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9114389C2A72B9F600B5401D /* ContentView.swift in Sources */,
+				911438AA2A733C0300B5401D /* MapView.swift in Sources */,
 				911438A82A72BA8C00B5401D /* LandmarkDetail.swift in Sources */,
 				9114389A2A72B9F600B5401D /* ChinaLandmarkApp.swift in Sources */,
 			);
