@@ -19,13 +19,7 @@ struct LandmarkList: View {
                     Text("只展示收藏")
                 }
                 ForEach(landmarks) { item in
-                    if isOpen {
-                        if item.isFeatured {
-                            NavigationLink(destination: LandmarkDetail(landmark: item)) {
-                                LandmarkListCell(landmark: item)
-                            }
-                        }
-                    } else {
+                    if !isOpen || item.isFeatured {
                         NavigationLink(destination: LandmarkDetail(landmark: item)) {
                             LandmarkListCell(landmark: item)
                         }
