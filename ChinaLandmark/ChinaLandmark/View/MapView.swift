@@ -9,6 +9,7 @@ import SwiftUI
 import MapKit
 
 struct MapView: UIViewRepresentable {
+    let landmark: Landmark
     func makeUIView(context: Context) -> MKMapView {
         return MKMapView()
     }
@@ -19,12 +20,12 @@ struct MapView: UIViewRepresentable {
         //比例尺
         let span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
         
-        uiView.setRegion(MKCoordinateRegion(center: center, span: span), animated: true)
+        uiView.setRegion(MKCoordinateRegion(center: landmark.locationCoordition, span: span), animated: true)
     }
 }
 
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        MapView()
+        MapView(landmark: landmarks[0])
     }
 }

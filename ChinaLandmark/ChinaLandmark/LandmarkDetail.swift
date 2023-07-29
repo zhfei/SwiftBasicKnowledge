@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct LandmarkDetail: View {
+    let landmark: Landmark
     var body: some View {
         VStack {
-            MapView()
+            MapView(landmark: landmark)
                 .edgesIgnoringSafeArea(Edge.Set.top)
                 .frame(height:350)
             
             
-            Image("phone7")
+            Image(landmark.imageName)
             //尺寸
                 .resizable()
                 .frame(width: 250, height: 250, alignment: .center)
@@ -31,15 +32,15 @@ struct LandmarkDetail: View {
                 .padding(Edge.Set.bottom, -100)
             
             VStack(alignment: .leading, spacing: 8){
-                Text("天安门").font(.title)
+                Text(landmark.name).font(.title)
                 HStack{
-                    Text("北京").font(.subheadline)
+                    Text(landmark.city).font(.subheadline)
                     Spacer()
-                    Text("北京市").font(.subheadline)
+                    Text(landmark.proviance).font(.subheadline)
                 }
-            }
+            }.padding()
             Spacer()
-        }.navigationBarTitle(Text("天安门"),displayMode: NavigationBarItem.TitleDisplayMode.inline)
+        }.navigationBarTitle(Text(landmark.name),displayMode: NavigationBarItem.TitleDisplayMode.inline)
         
     }
 }
@@ -47,7 +48,7 @@ struct LandmarkDetail: View {
 struct LandmarkDetail_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
-            LandmarkDetail()
+            LandmarkDetail(landmark: landmarks[0])
         }
         
     }
