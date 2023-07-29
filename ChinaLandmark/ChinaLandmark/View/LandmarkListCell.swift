@@ -19,8 +19,10 @@ struct LandmarkListCell: View {
             
             Text(landmark.city)
             Spacer()
-            Image("icon_rcxinhua_selected")
-                .resizable().frame(width: 20, height: 20, alignment: .center)
+            if landmark.isFeatured {
+                Image("icon_rcxinhua_selected")
+                    .resizable().frame(width: 20, height: 20, alignment: .center)
+            }
         }
     }
 }

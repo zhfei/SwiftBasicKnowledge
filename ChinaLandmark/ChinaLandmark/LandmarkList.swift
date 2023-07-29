@@ -9,32 +9,30 @@ import SwiftUI
 
 struct LandmarkList: View {
     
-    @State var isOpen: Bool = false
+    @State private var isOpen: Bool = false
     
     var body: some View {
         NavigationView{
-            
-//            ForEach() {
-//                Toggle(isOn: $isOpen) {
-//                    Text("开关")
-//                }
-
-                List(landmarks) { item in
-                    NavigationLink(destination: LandmarkDetail(landmark: item)) {
-                        if isOpen {
-                            if item.isFeatured {
+            List{
+                // $isOpen: 传入的是@State变量的引用，是双向绑定的效果，内部会自动对值取反操作
+                Toggle(isOn: $isOpen) {
+                    Text("只展示收藏")
+                }
+                ForEach(landmarks) { item in
+                    if isOpen {
+                        if item.isFeatured {
+                            NavigationLink(destination: LandmarkDetail(landmark: item)) {
                                 LandmarkListCell(landmark: item)
                             }
-                        } else {
+                        }
+                    } else {
+                        NavigationLink(destination: LandmarkDetail(landmark: item)) {
                             LandmarkListCell(landmark: item)
                         }
-                        
                     }
-                    
                 }
-//            }
-            
-            .navigationBarTitle(Text("中国地标"))
+                .navigationBarTitle(Text("中国地标"))
+            }
         }
         
     }
@@ -47,7 +45,7 @@ struct LandmarkList_Previews: PreviewProvider {
     }
     
     static var previews: some View {
-        //使用ForEach展示多个设备  
+        //使用ForEach展示多个设备
         ForEach([DeviceType(name: "iPhone 12"),DeviceType(name: "iPhone 13")]){ deviceItem in
             LandmarkList().previewDevice(PreviewDevice(rawValue: deviceItem.name))
                 .previewDisplayName(deviceItem.name)
