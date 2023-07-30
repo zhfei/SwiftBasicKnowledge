@@ -8,7 +8,13 @@
 import SwiftUI
 
 struct LandmarkDetail: View {
-    let landmark: Landmark
+    var landmark: Landmark
+    @ObservedObject var userData: UserData
+    
+    var userLandmarkIndex: Int {
+        userData.userLandmarks.firstIndex(where: {$0.id == landmark.id})!
+    }
+    
     var body: some View {
         VStack {
             MapView(landmark: landmark)
@@ -32,7 +38,22 @@ struct LandmarkDetail: View {
                 .padding(Edge.Set.bottom, -100)
             
             VStack(alignment: .leading, spacing: 8){
-                Text(landmark.name).font(.title)
+                HStack {
+                    Text(landmark.name).font(.title)
+                    Button(action: {
+                        self.userData.userLandmarks[self.userLandmarkIndex]
+                            .isFeatured.toggle()
+                    }){
+                        if landmark.isFeatured {
+                            Image("icon_rcxinhua_selected")
+                                .resizable().frame(width: 20, height: 20, alignment: .center)
+                        } else {
+                            Image("icon_rcxinhua_defaultselected")
+                                .resizable().frame(width: 20, height: 20, alignment: .center)
+                        }
+                    }
+                    
+                }
                 HStack{
                     Text(landmark.city).font(.subheadline)
                     Spacer()
@@ -48,7 +69,7 @@ struct LandmarkDetail: View {
 struct LandmarkDetail_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
-            LandmarkDetail(landmark: landmarks[0])
+            LandmarkDetail(landmark: landmarks[0], userData: UserData())
         }
         
     }

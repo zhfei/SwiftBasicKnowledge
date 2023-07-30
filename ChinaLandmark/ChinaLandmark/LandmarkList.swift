@@ -10,6 +10,8 @@ import SwiftUI
 struct LandmarkList: View {
     
     @State private var isOpen: Bool = false
+    //@ObservedObject: 全局环境变量绑定
+    @ObservedObject var userData: UserData = UserData()
     
     var body: some View {
         NavigationView{
@@ -18,9 +20,9 @@ struct LandmarkList: View {
                 Toggle(isOn: $isOpen) {
                     Text("只展示收藏")
                 }
-                ForEach(landmarks) { item in
+                ForEach(userData.userLandmarks) { item in
                     if !isOpen || item.isFeatured {
-                        NavigationLink(destination: LandmarkDetail(landmark: item)) {
+                        NavigationLink(destination: LandmarkDetail(landmark: item, userData: userData)) {
                             LandmarkListCell(landmark: item)
                         }
                     }
