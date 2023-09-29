@@ -7,19 +7,21 @@
 
 import SwiftUI
 
-struct HikeView: View {
-    @State private var isSelected = false
-    
-    fileprivate func HikeDetailView() -> some View {
+struct HikeDetailView: View {
+    var body: some View {
         return Image("phone8")
         //尺寸
             .resizable()
             .frame(width: 250, height: 250, alignment: .center)
         //阴影
             .shadow(radius: 10)
-            
     }
     
+}
+
+struct HikeView: View {
+    @State private var isSelected = false
+
     var body: some View {
         VStack {
             Button(action: {
@@ -37,7 +39,7 @@ struct HikeView: View {
                 HikeDetailView()
                 //insertion: 入场动画
                 //removal: 出场动画
-                    .transition(AnyTransition.asymmetric(insertion: AnyTransition.move(edge: .trailing).combined(with: .opacity), removal: AnyTransition.scale(scale: 0.1).combined(with: .opacity)))
+                    .transition(AnyTransition.asymmetric(insertion: AnyTransition.opacity.animation(.easeIn), removal: AnyTransition.scale(scale: 0.1).animation(.easeInOut(duration: 1.0))))
             }
             Spacer()
         }
