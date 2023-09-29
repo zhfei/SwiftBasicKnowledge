@@ -27,8 +27,9 @@ struct LandmarkList: View {
                         }
                     }
                 }
-                .navigationBarTitle(Text("中国地标"))
-            }
+                NavigationLink(destination: HikeView(), label: {Text("go Hike Detail")})
+                
+            }.navigationBarTitle(Text("中国地标"))
         }
         
     }

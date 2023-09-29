@@ -16,6 +16,7 @@
 		91CB15B72A749D08002F8D56 /* LandmarkList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CB15B62A749D07002F8D56 /* LandmarkList.swift */; };
 		91CB15B92A749D49002F8D56 /* LandmarkListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CB15B82A749D49002F8D56 /* LandmarkListCell.swift */; };
 		91CB15BB2A75D5AE002F8D56 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CB15BA2A75D5AE002F8D56 /* UserData.swift */; };
+		91DB7D8E2AC1DEA7007B9F7B /* HikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DB7D8D2AC1DEA7007B9F7B /* HikeView.swift */; };
 		91E1252B2A74024D003C1221 /* Landmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E1252A2A74024D003C1221 /* Landmark.swift */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +31,7 @@
 		91CB15B62A749D07002F8D56 /* LandmarkList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkList.swift; sourceTree = "<group>"; };
 		91CB15B82A749D49002F8D56 /* LandmarkListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkListCell.swift; sourceTree = "<group>"; };
 		91CB15BA2A75D5AE002F8D56 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		91DB7D8D2AC1DEA7007B9F7B /* HikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeView.swift; sourceTree = "<group>"; };
 		91E1252A2A74024D003C1221 /* Landmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Landmark.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -65,6 +67,7 @@
 			children = (
 				911438992A72B9F600B5401D /* ChinaLandmarkApp.swift */,
 				9114389B2A72B9F600B5401D /* ContentView.swift */,
+				91DB7D8D2AC1DEA7007B9F7B /* HikeView.swift */,
 				91CB15B62A749D07002F8D56 /* LandmarkList.swift */,
 				911438A72A72BA8C00B5401D /* LandmarkDetail.swift */,
 				9114389D2A72B9F700B5401D /* Assets.xcassets */,
@@ -175,6 +178,7 @@
 				91CB15B72A749D08002F8D56 /* LandmarkList.swift in Sources */,
 				91CB15BB2A75D5AE002F8D56 /* UserData.swift in Sources */,
 				911438AA2A733C0300B5401D /* MapView.swift in Sources */,
+				91DB7D8E2AC1DEA7007B9F7B /* HikeView.swift in Sources */,
 				911438A82A72BA8C00B5401D /* LandmarkDetail.swift in Sources */,
 				91CB15B92A749D49002F8D56 /* LandmarkListCell.swift in Sources */,
 				9114389A2A72B9F600B5401D /* ChinaLandmarkApp.swift in Sources */,
