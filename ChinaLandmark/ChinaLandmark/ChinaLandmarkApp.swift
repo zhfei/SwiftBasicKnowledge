@@ -11,7 +11,7 @@ import SwiftUI
 struct ChinaLandmarkApp: App {
     var body: some Scene {
         WindowGroup {
-            LandmarkList()
+            Home()
         }
     }
 }

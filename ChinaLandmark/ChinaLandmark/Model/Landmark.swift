@@ -29,7 +29,16 @@ struct Landmark: Identifiable {
 
 let landmarks = [
     Landmark(id: 1, category: "古迹",name: "天安门", city: "北京", proviance:"北京市", latitude: 39.9087243, longitude: 116.3952859, imageName: "phone7", isFavorite: true, isFeatured: true),
-    Landmark(id: 2, category: "现代建筑",name: "东方明珠", city: "上海", proviance:"上海市", latitude: 31.2396935, longitude: 121.4975613, imageName: "phone8", isFavorite: false, isFeatured: false)
+    Landmark(id: 2, category: "现代建筑",name: "东方明珠", city: "上海", proviance:"上海市", latitude: 31.2396935, longitude: 121.4975613, imageName: "phone8", isFavorite: false, isFeatured: false),
+    Landmark(id: 3, category: "古迹",name: "天安门", city: "北京", proviance:"北京市2", latitude: 39.9087243, longitude: 116.3952859, imageName: "phone8", isFavorite: true, isFeatured: true),
+    Landmark(id: 4, category: "现代建筑",name: "东方明珠", city: "上海", proviance:"上海市2", latitude: 31.2396935, longitude: 121.4975613, imageName: "phone7", isFavorite: false, isFeatured: false)
 ]
 
 let featuredLandmards = landmarks.filter {$0.isFeatured}
+
+var categories:[String: [Landmark]] {
+    Dictionary(grouping: landmarks) { landmark in
+        landmark.category
+    }
+}
+
