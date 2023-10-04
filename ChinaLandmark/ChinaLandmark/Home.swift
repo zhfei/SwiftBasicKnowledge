@@ -12,6 +12,8 @@ struct Home: View {
         Dictionary(grouping: landmarks, by: {$0.category})
     }
     
+    @State var isEdit: Bool = false
+    
     var body: some View {
         NavigationView {
             List {
@@ -35,6 +37,25 @@ struct Home: View {
                 .listRowInsets(EdgeInsets.init())
             }
             .navigationTitle("精选")
+            .navigationBarItems(trailing: Button(action: {
+                //@State var isEdit: Bool = false
+                self.isEdit.toggle()
+            }, label: {
+                Image(systemName: "person.circle.fill")
+                    .foregroundColor(isEdit ? .red : .blue)
+            }))
+            //PresentationLink的实现方案，对应NavigationLink
+            /*
+             NavigationLink方案
+             NavigationLink(destination: LandmarkList()) {
+                 Text("查看所有地标")
+             }
+             .listRowInsets(EdgeInsets.init())
+             */
+            //跟在list的后面
+            .sheet(isPresented: $isEdit) {
+                Text("Hello Jack")
+            }
         }
         
     }
