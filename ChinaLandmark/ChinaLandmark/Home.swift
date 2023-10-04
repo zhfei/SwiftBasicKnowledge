@@ -54,7 +54,7 @@ struct Home: View {
              */
             //跟在list的后面
             .sheet(isPresented: $isEdit) {
-                Text("Hello Jack")
+                Profile()
             }
         }
         
