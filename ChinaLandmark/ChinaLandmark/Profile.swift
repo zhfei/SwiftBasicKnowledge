@@ -23,8 +23,10 @@ struct Profile: View {
         
         VStack(alignment: .trailing){
             HStack{
-                Button(action: {}) {
-                    Text("完成")
+                if editMode?.wrappedValue == .active {
+                    Button(action: {}) {
+                        Text("完成")
+                    }
                 }
                 Spacer()
                 EditButton()
@@ -70,11 +72,9 @@ struct Profile: View {
                         Text("喜欢的季节").bold()
                         Picker("季节列表", selection: $profile.prefersSeason) {
                             //[item]数组内的元素item要遵守Identifiable协议
-//                            ForEach(["a"]){
-//                                
-//                            }
-                            ForEach(Range(NSMakeRange(0, User.Season.allCases.count))!) { index in
-                                Text(User.Season.allCases[index].rawValue).tag(index)
+                            //enum枚举类型添加var id: String {rawValue}计算属性，struct结构体添加var id: String存储属性
+                            ForEach(User.Season.allCases) { season in
+                                Text(season.rawValue).tag(season)
                             }
                             //(menu, wheel, segmented)
                         }.pickerStyle(.segmented)
