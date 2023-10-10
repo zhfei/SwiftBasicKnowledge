@@ -11,7 +11,9 @@ struct Profile: View {
     //全局环境变量
     @Environment(\.editMode) var editMode
     
-    @State var profile = User.default
+    
+    @State private var profile = User.default
+    @State private var profileCopy = User.default
     
     var dateFormatter: DateFormatter {
         let dateFormatter = DateFormatter()
@@ -24,7 +26,14 @@ struct Profile: View {
         VStack(alignment: .trailing){
             HStack{
                 if editMode?.wrappedValue == .active {
-                    Button(action: {}) {
+                    Button(action: {
+                        profile = profileCopy
+                        //直接设置值没用动画
+//                        editMode?.wrappedValue = .inactive
+                        //调用editMode?.animation()，返回的结果也是一个editMode，只是它的属性在被修改后，会有动画过度
+                        editMode?.animation().wrappedValue = .inactive
+                        
+                    }) {
                         Text("完成")
                     }
                 }
@@ -61,16 +70,16 @@ struct Profile: View {
                     HStack {
                         Text("昵称").font(.headline)
                         Divider()
-                        TextField("昵称", text: $profile.username)
+                        TextField("昵称", text: $profileCopy.username)
                     }
                     
-                    Toggle(isOn: $profile.prefersNotifications, label: {
+                    Toggle(isOn: $profileCopy.prefersNotifications, label: {
                         Text("允许通知")
                     })
                     
                     VStack(alignment: .leading) {
                         Text("喜欢的季节").bold()
-                        Picker("季节列表", selection: $profile.prefersSeason) {
+                        Picker("季节列表", selection: $profileCopy.prefersSeason) {
                             //[item]数组内的元素item要遵守Identifiable协议
                             //enum枚举类型添加var id: String {rawValue}计算属性，struct结构体添加var id: String存储属性
                             ForEach(User.Season.allCases) { season in
@@ -82,10 +91,12 @@ struct Profile: View {
                     
                     VStack(alignment: .leading){
                         Text("生日").bold()
-                        DatePicker( "生日选择", selection: $profile.birthday, displayedComponents: .date)
+                        DatePicker( "生日选择", selection: $profileCopy.birthday, displayedComponents: .date)
                     }.padding(.top)
                     
                     
+                }.onDisappear {
+                    profileCopy = profile
                 }
             }
         }.padding()
