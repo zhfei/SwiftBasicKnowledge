@@ -62,5 +62,9 @@ struct Home: View {
 }
 
 #Preview {
-    Home()
+    Group {
+        Home()
+        Home().environment(\.colorScheme, .dark)
+    }
+    
 }

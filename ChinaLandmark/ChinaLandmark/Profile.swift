@@ -11,7 +11,7 @@ struct Profile: View {
     //全局环境变量
     @Environment(\.editMode) var editMode
     
-    
+    //当前View内，数据与视图的双向绑定
     @State private var profile = User.default
     @State private var profileCopy = User.default
     
@@ -66,36 +66,7 @@ struct Profile: View {
             } else {
                 
                 
-                List{
-                    HStack {
-                        Text("昵称").font(.headline)
-                        Divider()
-                        TextField("昵称", text: $profileCopy.username)
-                    }
-                    
-                    Toggle(isOn: $profileCopy.prefersNotifications, label: {
-                        Text("允许通知")
-                    })
-                    
-                    VStack(alignment: .leading) {
-                        Text("喜欢的季节").bold()
-                        Picker("季节列表", selection: $profileCopy.prefersSeason) {
-                            //[item]数组内的元素item要遵守Identifiable协议
-                            //enum枚举类型添加var id: String {rawValue}计算属性，struct结构体添加var id: String存储属性
-                            ForEach(User.Season.allCases) { season in
-                                Text(season.rawValue).tag(season)
-                            }
-                            //(menu, wheel, segmented)
-                        }.pickerStyle(.segmented)
-                    }.padding(.top)
-                    
-                    VStack(alignment: .leading){
-                        Text("生日").bold()
-                        DatePicker( "生日选择", selection: $profileCopy.birthday, displayedComponents: .date)
-                    }.padding(.top)
-                    
-                    
-                }.onDisappear {
+                ProfileEditor(profileCopy: $profileCopy).onDisappear {
                     profileCopy = profile
                 }
             }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		910A53DD2AD59B9A00054185 /* ProfileEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910A53DC2AD59B9A00054185 /* ProfileEditor.swift */; };
 		9112DEBF2ACC5ED70011780C /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9112DEBE2ACC5ED70011780C /* CategoryCell.swift */; };
 		9114389A2A72B9F600B5401D /* ChinaLandmarkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911438992A72B9F600B5401D /* ChinaLandmarkApp.swift */; };
 		9114389C2A72B9F600B5401D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9114389B2A72B9F600B5401D /* ContentView.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		910A53DC2AD59B9A00054185 /* ProfileEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditor.swift; sourceTree = "<group>"; };
 		9112DEBE2ACC5ED70011780C /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		911438962A72B9F600B5401D /* ChinaLandmark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChinaLandmark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		911438992A72B9F600B5401D /* ChinaLandmarkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChinaLandmarkApp.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				9114389F2A72B9F800B5401D /* Preview Content */,
 				91E125292A740231003C1221 /* View */,
 				91E1252C2A740253003C1221 /* Model */,
+				910A53DC2AD59B9A00054185 /* ProfileEditor.swift */,
 			);
 			path = ChinaLandmark;
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 				91CB15B72A749D08002F8D56 /* LandmarkList.swift in Sources */,
 				916CEC892AC820A200E87DBF /* Home.swift in Sources */,
 				916A350F2ACDA7D700EC834D /* Profile.swift in Sources */,
+				910A53DD2AD59B9A00054185 /* ProfileEditor.swift in Sources */,
 				91CB15BB2A75D5AE002F8D56 /* UserData.swift in Sources */,
 				911438AA2A733C0300B5401D /* MapView.swift in Sources */,
 				91DB7D8E2AC1DEA7007B9F7B /* HikeView.swift in Sources */,
