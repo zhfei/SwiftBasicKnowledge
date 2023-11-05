@@ -10,13 +10,18 @@ import SwiftUI
 struct CardView: View {
     // MARK: Properties
 //    var gradient: [Color] = [Color("Color01"),Color("Color02")]
+    @State private var fadeIn: Bool = false
+    @State private var moveDownward: Bool = false
+    @State private var moveUpward: Bool = false
     var cardData: Card
+    var hapticImpact = UIImpactFeedbackGenerator(style: .heavy) //触控
     
     
     // MARK: Body
     var body: some View {
         ZStack{
             Image(cardData.imageName, bundle: nil)
+                .opacity(fadeIn ? 1.0 : 0.0)
             
             VStack(content: {
                 Text(cardData.title)
@@ -29,11 +34,12 @@ struct CardView: View {
                     .foregroundColor(.white)
                     .italic() //斜体
             })
-            .offset(y: -218)
+            .offset(y: moveDownward ? -218 : -300)
             
             Button {
                 print("按钮点击")
                 playSound(sound: "sound-transitions", type: "mp3")
+                hapticImpact.impactOccurred()
             } label: {
                 HStack {
                     Text(cardData.callToAction)
@@ -51,13 +57,20 @@ struct CardView: View {
                 .clipShape(Capsule())
                 .shadow(color: Color("ColorShadow"), radius: 6, x: 0, y: 3)
             }
-            .offset(y:210)
+            .offset(y: moveUpward ? 210 : 300)
 
         }
         .frame(width: 335, height: 545)
         .background(LinearGradient(colors: cardData.gradientColors, startPoint: .top, endPoint: .bottom))
         .cornerRadius(20)
         .shadow(radius: 10)
+        .onAppear {
+            withAnimation(.linear(duration: 1.2)) {
+                self.fadeIn.toggle()
+                self.moveDownward.toggle()
+                self.moveUpward.toggle()
+            }
+        }
     }
 }
 
