@@ -9,20 +9,22 @@ import SwiftUI
 
 struct CardView: View {
     // MARK: Properties
-    var gradient: [Color] = [Color("Color01"),Color("Color02")]
+//    var gradient: [Color] = [Color("Color01"),Color("Color02")]
+    var cardData: Card
+    
     
     // MARK: Body
     var body: some View {
         ZStack{
-            Image("developer-no1", bundle: nil)
+            Image(cardData.imageName, bundle: nil)
             
             VStack(content: {
-                Text("SwiftUI")
+                Text(cardData.title)
                     .font(.largeTitle)
                     .fontWeight(.heavy)
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
-                Text("如此美妙 不同凡响")
+                Text(cardData.headline)
                     .fontWeight(.light)
                     .foregroundColor(.white)
                     .italic() //斜体
@@ -31,9 +33,10 @@ struct CardView: View {
             
             Button {
                 print("按钮点击")
+                playSound(sound: "sound-transitions", type: "mp3")
             } label: {
                 HStack {
-                    Text("技术总监")
+                    Text(cardData.callToAction)
                         .fontWeight(.heavy)
                         .foregroundColor(.white)
                         .accentColor(.blue) // 设置强调色
@@ -44,7 +47,7 @@ struct CardView: View {
                 }
                 .padding(.horizontal,24)
                 .padding(.vertical)
-                .background(LinearGradient(colors: gradient, startPoint: .leading, endPoint: .trailing))
+                .background(LinearGradient(colors: cardData.gradientColors, startPoint: .leading, endPoint: .trailing))
                 .clipShape(Capsule())
                 .shadow(color: Color("ColorShadow"), radius: 6, x: 0, y: 3)
             }
@@ -52,7 +55,7 @@ struct CardView: View {
 
         }
         .frame(width: 335, height: 545)
-        .background(LinearGradient(colors: gradient, startPoint: .top, endPoint: .bottom))
+        .background(LinearGradient(colors: cardData.gradientColors, startPoint: .top, endPoint: .bottom))
         .cornerRadius(20)
         .shadow(radius: 10)
     }
@@ -60,7 +63,7 @@ struct CardView: View {
 
 // MARK: Preview
 #Preview {
-    CardView()
+    CardView(cardData: cardData[2])
         .previewLayout(.sizeThatFits) //展示组件尺寸
 //        .previewDevice("iPhone 11") //展示设备尺寸
 }

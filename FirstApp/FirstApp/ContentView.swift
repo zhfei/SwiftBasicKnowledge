@@ -12,7 +12,14 @@ struct ContentView: View {
     
     // MARK: Body
     var body: some View {
-        CardView()
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(alignment: .top, spacing: 20) {
+                ForEach(0..<7) { item in
+                    CardView(cardData: cardData[item])
+                }
+            }
+            .padding(20)
+        }
     }
 }
 
