@@ -14,9 +14,42 @@ struct CardView: View {
     // MARK: Body
     var body: some View {
         ZStack{
-            Text("卡片")
-                .background(Color.blue)
-                .frame(width: 60,height: 60) //对内容标签无效
+            Image("developer-no1", bundle: nil)
+            
+            VStack(content: {
+                Text("SwiftUI")
+                    .font(.largeTitle)
+                    .fontWeight(.heavy)
+                    .foregroundColor(.white)
+                    .multilineTextAlignment(.center)
+                Text("如此美妙 不同凡响")
+                    .fontWeight(.light)
+                    .foregroundColor(.white)
+                    .italic() //斜体
+            })
+            .offset(y: -218)
+            
+            Button {
+                print("按钮点击")
+            } label: {
+                HStack {
+                    Text("技术总监")
+                        .fontWeight(.heavy)
+                        .foregroundColor(.white)
+                        .accentColor(.blue) // 设置强调色
+                    
+                    Image(systemName: "arrow.right.circle")
+                        .font(Font.title.weight(.medium))
+                        .accentColor(.white)
+                }
+                .padding(.horizontal,24)
+                .padding(.vertical)
+                .background(LinearGradient(colors: gradient, startPoint: .leading, endPoint: .trailing))
+                .clipShape(Capsule())
+                .shadow(color: Color("ColorShadow"), radius: 6, x: 0, y: 3)
+            }
+            .offset(y:210)
+
         }
         .frame(width: 335, height: 545)
         .background(LinearGradient(colors: gradient, startPoint: .top, endPoint: .bottom))
