@@ -61,7 +61,31 @@ extension ARView: ARSessionDelegate {
         }
         
     }
+    
+    func changeImagesLib() {
+        let config = self.session.configuration as! ARImageTrackingConfiguration
+        
+        guard let referenceImagesLib = ARReferenceImage.referenceImages(inGroupNamed: "ARImageResources2", bundle: Bundle.main) else {
+            fatalError("无法加载参考图像库")
+        }
+        config.trackingImages = referenceImagesLib
+        config.maximumNumberOfTrackedImages = 1
+        self.session.run(config, options: [.resetTracking, .removeExistingAnchors])
+    }
+    
+    func addReferenceImages() {
+        let config = self.session.configuration as! ARImageTrackingConfiguration
+        let image = UIImage(named: "toy_biplan")
+        let referenceImage = ARReferenceImage(image!.cgImage!, orientation: .up, physicalWidth: 0.2)
+        referenceImage.name = "toy_biplan"
+
+        config.trackingImages.insert(referenceImage)
+        config.maximumNumberOfTrackedImages = 1
+        self.session.run(config, options: [])
+    }
 }
+
+
 
 
 #Preview {
