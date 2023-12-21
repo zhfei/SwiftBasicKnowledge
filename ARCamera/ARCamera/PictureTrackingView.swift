@@ -21,12 +21,18 @@ struct PictureTrackingViewContainer: UIViewRepresentable {
     func makeUIView(context: Context) -> ARView {
         let arView = ARView(frame: .zero)
         let config = ARImageTrackingConfiguration()
-        guard let trackedImageLib = ARReferenceImage.referenceImages(inGroupNamed: "ARImageResources", bundle: Bundle.main) else {
-            fatalError("无法加载图像参考库")
-        }
+//        guard let trackedImageLib = ARReferenceImage.referenceImages(inGroupNamed: "ARImageResources", bundle: Bundle.main) else {
+//            fatalError("无法加载图像参考库")
+//        }
+        
+        var trackedImageLib = Set<ARReferenceImage>()
+        let image = UIImage(named: "toy_drummer")
+        let referenceImage = ARReferenceImage(image!.cgImage!, orientation: .up, physicalWidth: 0.15)
+        referenceImage.name = "toy_drummer"
+        trackedImageLib.insert(referenceImage)
         
         config.trackingImages = trackedImageLib
-        config.maximumNumberOfTrackedImages = 2
+        config.maximumNumberOfTrackedImages = 1
         arView.session.run(config, options: [])
         arView.session.delegate = arView
         theARView = arView
