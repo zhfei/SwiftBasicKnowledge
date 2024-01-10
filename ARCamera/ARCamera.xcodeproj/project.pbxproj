@@ -15,6 +15,7 @@
 		91278FC82B3484CF000488AB /* PictureTrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91278FC72B3484CF000488AB /* PictureTrackingView.swift */; };
 		91278FCB2B348C3C000488AB /* toy_robot_vintage.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 91278FC92B348C3C000488AB /* toy_robot_vintage.usdz */; };
 		91278FCC2B348C3C000488AB /* toy_biplane.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 91278FCA2B348C3C000488AB /* toy_biplane.usdz */; };
+		915665892B4ED558009F61C4 /* MutablePicturesTrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915665882B4ED558009F61C4 /* MutablePicturesTrackingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		91278FC72B3484CF000488AB /* PictureTrackingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureTrackingView.swift; sourceTree = "<group>"; };
 		91278FC92B348C3C000488AB /* toy_robot_vintage.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = toy_robot_vintage.usdz; sourceTree = "<group>"; };
 		91278FCA2B348C3C000488AB /* toy_biplane.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = toy_biplane.usdz; sourceTree = "<group>"; };
+		915665882B4ED558009F61C4 /* MutablePicturesTrackingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MutablePicturesTrackingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				91278FB72B3482CC000488AB /* AppDelegate.swift */,
 				91278FB92B3482CC000488AB /* ContentView.swift */,
 				91278FC72B3484CF000488AB /* PictureTrackingView.swift */,
+				915665882B4ED558009F61C4 /* MutablePicturesTrackingView.swift */,
 				91278FBB2B3482CF000488AB /* Assets.xcassets */,
 				91278FBD2B3482CF000488AB /* Preview Content */,
 			);
@@ -153,6 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				91278FC82B3484CF000488AB /* PictureTrackingView.swift in Sources */,
+				915665892B4ED558009F61C4 /* MutablePicturesTrackingView.swift in Sources */,
 				91278FBA2B3482CC000488AB /* ContentView.swift in Sources */,
 				91278FB82B3482CC000488AB /* AppDelegate.swift in Sources */,
 			);

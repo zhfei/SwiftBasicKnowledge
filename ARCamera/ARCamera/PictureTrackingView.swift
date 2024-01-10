@@ -42,27 +42,28 @@ struct PictureTrackingViewContainer: UIViewRepresentable {
     func updateUIView(_ uiView: ARView, context: Context) {}
 }
 
-extension ARView: ARSessionDelegate {
-    public func session(_ session: ARSession, didAdd anchors: [ARAnchor]) {
-        guard let imageAnchor = anchors.first as? ARImageAnchor else {
-            return
-        }
-        
-        let refrenceImageName = imageAnchor.referenceImage.name ?? "toy_biplane"
-        DispatchQueue.main.async {
-            do {
-                let myModelEntity = try Entity.loadModel(named: refrenceImageName)
-                let imageAnchorEntity = AnchorEntity(anchor: imageAnchor)
-                imageAnchorEntity.addChild(myModelEntity)
-                self.scene.addAnchor(imageAnchorEntity)
-            } catch {
-                print("加载模型失败",error.localizedDescription)
-            }
-        }
-        
-    }
+extension ARView {
+//extension ARView: ARSessionDelegate {
+//    fileprivate func session(_ session: ARSession, didAdd anchors: [ARAnchor]) {
+//        guard let imageAnchor = anchors.first as? ARImageAnchor else {
+//            return
+//        }
+//        
+//        let refrenceImageName = imageAnchor.referenceImage.name ?? "toy_biplane"
+//        DispatchQueue.main.async {
+//            do {
+//                let myModelEntity = try Entity.loadModel(named: refrenceImageName)
+//                let imageAnchorEntity = AnchorEntity(anchor: imageAnchor)
+//                imageAnchorEntity.addChild(myModelEntity)
+//                self.scene.addAnchor(imageAnchorEntity)
+//            } catch {
+//                print("加载模型失败",error.localizedDescription)
+//            }
+//        }
+//        
+//    }
     
-    func changeImagesLib() {
+    fileprivate func changeImagesLib() {
         let config = self.session.configuration as! ARImageTrackingConfiguration
         
         guard let referenceImagesLib = ARReferenceImage.referenceImages(inGroupNamed: "ARImageResources2", bundle: Bundle.main) else {
@@ -73,7 +74,7 @@ extension ARView: ARSessionDelegate {
         self.session.run(config, options: [.resetTracking, .removeExistingAnchors])
     }
     
-    func addReferenceImages() {
+    fileprivate func addReferenceImages() {
         let config = self.session.configuration as! ARImageTrackingConfiguration
         let image = UIImage(named: "toy_biplan")
         let referenceImage = ARReferenceImage(image!.cgImage!, orientation: .up, physicalWidth: 0.2)

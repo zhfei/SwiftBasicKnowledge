@@ -10,7 +10,7 @@ import RealityKit
 
 struct ContentView : View {
     var body: some View {
-        PictureTrackingView().edgesIgnoringSafeArea(.all)
+        MutablePicturesTrackingView().edgesIgnoringSafeArea(.all)
     }
 }
 
