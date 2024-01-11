@@ -10,8 +10,34 @@ import RealityKit
 import ARKit
 
 struct MutablePicturesTrackingView: View {
+    @State var isSaved: Bool
+    
     var body: some View {
-        PicturesTrackingViewContainer()
+        VStack {
+            PicturesTrackingViewContainer()
+            Divider()
+            HStack {
+                Button {
+                    theARView2?.saveWorldMap(block: {
+                        isSaved.toggle()
+                    })
+                } label: {
+                    VStack {
+                        Text("保存worldMap")
+                        if isSaved {
+                            Text("保存worldMap成功")
+                        }
+                    }
+                }
+                Spacer()
+                Button {
+                    theARView2?.loadARWorldMap()
+                } label: {
+                    Text("加载worldMap")
+                }
+
+            }.padding(.bottom,20)
+        }
     }
 }
 
@@ -28,10 +54,6 @@ var mapSaveURL: URL = {
 var mapDataFromFile: Data? {
     return try? Data(contentsOf: mapSaveURL)
 }
-
-var listM: [String] = []
-
-
 
 struct PicturesTrackingViewContainer: UIViewRepresentable {
     func makeUIView(context: Context) -> ARView {
@@ -82,15 +104,6 @@ extension ARView: ARSessionDelegate {
                     print("加载模型失败",error.localizedDescription)
                 }
             }
-            if !listM.contains(refrenceImageName) {
-                listM.append(refrenceImageName)
-                saveWorldMap()
-                self.session.pause()
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3.5, execute: {[weak self] in
-                    self?.loadARWorldMap()
-                    
-                })
-            }
             
         } else {
             print("图像锚点类型错误\(imageAnchor.referenceImage)")
@@ -123,7 +136,7 @@ extension ARView: ARSessionDelegate {
     
 
     
-    fileprivate func saveWorldMap() {
+    fileprivate func saveWorldMap(block:@escaping ()->()) {
         self.session.getCurrentWorldMap { worldMap, error in
             guard let map = worldMap else {
                 print("无法获取当前地图\(String(describing: error?.localizedDescription))")
@@ -133,6 +146,10 @@ extension ARView: ARSessionDelegate {
             do {
                 let data = try NSKeyedArchiver.archivedData(withRootObject: map, requiringSecureCoding: true)
                 try data.write(to: mapSaveURL, options: [.atomic])
+                
+                if block != nil {
+                    block()
+                }
             } catch {
                 
             }
@@ -167,7 +184,39 @@ extension ARView: ARSessionDelegate {
         config.initialWorldMap = worldMap
         config.detectionImages = trackedImageLib
         
+  
+        
         self.session.run(config, options: [.resetTracking, .removeExistingAnchors])
+        
+        for anchor in worldMap.anchors {
+            do {
+                // 创建球体
+                let sphere = MeshResource.generateSphere(radius: 0.05)
+
+                // 创建球体的材质
+                let material = SimpleMaterial(color: .red, isMetallic: false)
+
+                // 创建球体的 Entity
+                let sphereEntity = ModelEntity(mesh: sphere, materials: [material])
+                let imageAnchorEntity = AnchorEntity(anchor: anchor)
+                imageAnchorEntity.addChild(sphereEntity)
+                self.scene.addAnchor(imageAnchorEntity)
+            } catch {
+                print("加载模型失败",error.localizedDescription)
+            }
+//            if let imageAnchor = anchor as? ARImageAnchor {
+//                let modelName = imageAnchor.referenceImage.name ?? ""
+//                
+//                do {
+//                    let myModelEntity = try Entity.loadModel(named: modelName)
+//                    let imageAnchorEntity = AnchorEntity(anchor: imageAnchor)
+//                    imageAnchorEntity.addChild(myModelEntity)
+//                    self.scene.addAnchor(imageAnchorEntity)
+//                } catch {
+//                    print("加载模型失败",error.localizedDescription)
+//                }
+//            }
+        }
     }
    
 }
